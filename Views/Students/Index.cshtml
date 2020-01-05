@@ -1,0 +1,44 @@
+@model IEnumerable<CosmosEfWeb.Models.Student>
+@{
+  ViewData["Title"] = "List of students";
+}
+<h1>@ViewData["Title"]</h1>
+<p>
+  <a asp-action="Create" class="btn btn-success btn-sm">Create New Student</a>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.FirstName)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.LastName)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.School)
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+@foreach (var item in Model) {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.School)
+        </td>
+        <td>
+          @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-primary btn-sm" }) |
+          @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary btn-sm" }) |
+          @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-primary btn-sm" })
+        </td>
+      </tr>
+}
+  </tbody>
+</table>
